@@ -75,6 +75,21 @@ body,
   padding: 3rem 3rem 30vh;
 }
 
+/* Placeholder styling */
+.simple-editor-content .tiptap.ProseMirror.simple-editor.is-editor-empty::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: var(--tt-gray-light-500);
+  pointer-events: none;
+  height: 0;
+  font-style: italic;
+  opacity: 0.6;
+}
+
+.dark .simple-editor-content .tiptap.ProseMirror.simple-editor.is-editor-empty::before {
+  color: var(--tt-gray-dark-500);
+}
+
 @media screen and (max-width: 480px) {
   .simple-editor-content .tiptap.ProseMirror.simple-editor {
     padding: 1rem 1.5rem 30vh;

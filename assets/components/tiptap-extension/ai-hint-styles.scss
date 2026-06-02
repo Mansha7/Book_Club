@@ -1,0 +1,110 @@
+// Inline AI Hint Styles - Double-Click Triggered
+
+.ai-hint-marker {
+  display: block;
+  margin: 0.75rem 0;
+  padding: 0.875rem 1rem;
+  padding-right: 2.5rem;
+  background: rgba(139, 92, 246, 0.06);
+  border-left: 3px solid rgba(139, 92, 246, 0.4);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: rgba(139, 92, 246, 0.9);
+  cursor: default;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  position: relative;
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  .dark & {
+    background: rgba(139, 92, 246, 0.1);
+    border-left-color: rgba(167, 139, 250, 0.5);
+    color: rgba(167, 139, 250, 0.9);
+  }
+
+  &:hover {
+    background: rgba(139, 92, 246, 0.1);
+    border-left-color: rgba(139, 92, 246, 0.6);
+    transform: translateX(4px);
+    
+    .dark & {
+      background: rgba(139, 92, 246, 0.14);
+      border-left-color: rgba(167, 139, 250, 0.7);
+    }
+  }
+
+  // Icon before text
+  &::before {
+    content: '💭 ';
+    margin-right: 0.5rem;
+    font-style: normal;
+    opacity: 0.9;
+  }
+}
+
+.ai-hint-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(139, 92, 246, 0.1);
+  border-radius: 4px;
+  font-size: 1.25rem;
+  font-style: normal;
+  color: rgba(139, 92, 246, 0.6);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+  
+  .dark & {
+    background: rgba(167, 139, 250, 0.15);
+    color: rgba(167, 139, 250, 0.7);
+  }
+
+  &:hover {
+    background: rgba(139, 92, 246, 0.2);
+    color: rgba(139, 92, 246, 0.9);
+    transform: scale(1.1);
+    
+    .dark & {
+      background: rgba(167, 139, 250, 0.25);
+      color: rgba(167, 139, 250, 1);
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Ensure hints don't interfere with text selection
+.ProseMirror {
+  .ai-hint-marker {
+    pointer-events: auto;
+  }
+}
+
+// Mobile adjustments
+@media screen and (max-width: 768px) {
+  .ai-hint-marker {
+    font-size: 0.8125rem;
+    padding: 0.75rem 0.875rem;
+    margin: 0.5rem 0;
+  }
+}
+
+// Made with Bob
